@@ -10,6 +10,8 @@ git clone https://github.com/garlic0x1/fusillade.git ~/quicklisp/local-projects/
 #+end_src
 
 * Usage
+The usage is what you expect, but with an extra first argument to specify the number of threads to use.
+
 #+begin_src lisp
 (ql:quickload :fusillade)
 (use-package :fusillade)
@@ -21,3 +23,5 @@ git clone https://github.com/garlic0x1/fusillade.git ~/quicklisp/local-projects/
 
 * Limitations
 Since this uses native threads, it is not ideal for heavy IO applications. Perhaps I will add async functions in the future.
+
+Tests are incomplete.
