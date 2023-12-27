@@ -1,0 +1,23 @@
+#+title: Fusillade
+
+* Introduction
+Concurrent alternatives to make map/filter/foreach using bordeaux-threads.
+
+The functions spawn workers that consume items from a list or queue as soon as they are ready for one.
+
+#+begin_src bash
+git clone https://github.com/garlic0x1/fusillade.git ~/quicklisp/local-projects/fusillade
+#+end_src
+
+* Usage
+#+begin_src lisp
+(ql:quickload :fusillade)
+(use-package :fusillade)
+
+(wmap 4 #'sleep '(1 2 2 2))     ; takes 2 seconds
+(wforeach 2 #'sleep '(1 2 2 2)) ; takes 4 seconds
+(wfilter 2 #'evenp '(1 2 2 2))  ; instant (no sleep)
+#+end_src
+
+* Limitations
+Since this uses native threads, it is not ideal for heavy IO applications. Perhaps I will add async functions in the future.
