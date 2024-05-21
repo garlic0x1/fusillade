@@ -1,7 +1,7 @@
 (defpackage :fusillade/util
   (:use :cl)
   (:export #:list->simple-cqueue #:simple-cqueue->list #:join-consumers))
-(in-package :fusillade/core)
+(in-package :fusillade/util)
 
 ;; ----------------------------------------------------------------------------
 (defun list->simple-cqueue (list)
@@ -18,8 +18,8 @@
 ;; ----------------------------------------------------------------------------
 (defmacro join-workers (workers &body body)
   `(mapcar #'bt:join-thread
-    (loop :repeat ,workers
-          :collect (bt:make-thread (lambda () ,@body)))))
+           (loop :repeat ,workers
+                 :collect (bt:make-thread (lambda () ,@body)))))
 
 ;; ----------------------------------------------------------------------------
 (defmacro queue-consumer (q &body proc)
